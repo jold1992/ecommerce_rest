@@ -50,7 +50,7 @@ class Indicator(BaseModel):
 
     # TODO: Define fields here
     descount_value = models.PositiveSmallIntegerField(default=0)
-    category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Indicador de oferta', blank=True, null=True)
+    category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Indicador de oferta', null=True)
     historical = HistoricalRecords()
 
 
@@ -79,8 +79,8 @@ class Product(BaseModel):
     name = models.CharField('Nombre de producto', max_length=150, unique=True, blank=False, null=False)
     description = models.TextField('Descripción de producto', blank=False, null=False)
     image = models.ImageField('Imagen del producto', upload_to='products/', blank=True, null=True)
-    measure_unit = models.ForeignKey(MeasureUnit, on_delete=models.CASCADE, verbose_name='Unidad de medida')
-    category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Categoría de producto')
+    measure_unit = models.ForeignKey(MeasureUnit, on_delete=models.CASCADE, verbose_name='Unidad de medida', null = True)
+    category_product = models.ForeignKey(CategoryProduct, on_delete=models.CASCADE, verbose_name='Categoría de producto', null = True)
     historical = HistoricalRecords()
 
 

@@ -50,6 +50,7 @@ THIRD_APPS = [
     'rest_framework.authtoken',
     'simple_history',
     'drf_yasg',
+    'corsheaders',
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
@@ -58,9 +59,10 @@ SWAGGER_SETTINGS = {
     'DOC_EXPANSION': 'none',
 }
 
-TOKEN_EXPIRED_AFTER_SECONDS = 900
+TOKEN_EXPIRED_AFTER_SECONDS = 120
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -123,6 +125,11 @@ USE_I18N = True
 USE_TZ = True
 
 AUTH_USER_MODEL = 'users.User'
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+  'http://localhost:3000',
+)
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

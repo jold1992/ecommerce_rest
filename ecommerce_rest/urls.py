@@ -21,7 +21,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Login.as_view(), name = 'login'),
+    path('login/', Login.as_view(), name = 'login'),
     path('refresh-token/', UserToken.as_view(), name = 'refresh_token'),
     path('logout/', Logout.as_view(), name = 'logout'),
     path('usuario/', include('apps.users.api.urls')),
